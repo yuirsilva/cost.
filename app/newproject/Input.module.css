@@ -1,0 +1,16 @@
+.inputWrap {
+    margin-bottom: 1.5rem;
+}
+.inputWrap label {
+    gap: 0.6rem;
+    display: flex;
+    flex-direction: column;
+}
+.inputWrap input {
+    padding: 0.7rem;
+    border-radius: 10px;
+    border: 1px solid rgb(165, 165, 165);
+}
+.inputWrap input::placeholder {
+    color: rgb(165, 165, 165);
+}

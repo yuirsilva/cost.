@@ -1,0 +1,16 @@
+.submitButton {
+    width: 100%;
+    margin-top: 2rem;
+    background-color: var(--secondary-clr);
+    color: var(--primary-clr);
+    padding: 1rem 2rem;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.5s var(--ease-out-expo);
+}
+.submitButton:hover {
+    background-color: var(--primary-clr);
+    color: var(--secondary-clr);
+}

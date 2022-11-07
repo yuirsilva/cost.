@@ -1,0 +1,28 @@
+.newProjectContainer {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.formWrap {
+    background-color: #FFF;
+    border-radius: 16px;
+    padding: 2rem;
+}
+.newProjectContainer h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+.newProjectContainer img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: -1;
+    user-select: none;
+    pointer-events: none;
+}

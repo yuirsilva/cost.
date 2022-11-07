@@ -1,0 +1,19 @@
+.container {
+    width: 90%;
+    height: calc(100% - 20%);
+
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    margin-inline: auto;
+}
+
+.flexStart {
+    justify-content: flex-start;
+}
+.flexColumn {
+    flex-direction: column;
+    justify-content: flex-start;
+}

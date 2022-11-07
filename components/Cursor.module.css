@@ -1,0 +1,14 @@
+.cursor {
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #DB2763;
+    transition: transform 0.2s ease-in-out;
+    z-index: 999;
+}

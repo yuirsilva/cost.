@@ -1,0 +1,22 @@
+.mainHeader {
+    width: 90%;
+    height: 10%;
+    margin-inline: auto;
+    padding: 1.2rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 3.5rem;
+}
+
+.navbar {
+    display: flex;
+    gap: 2rem;
+}
+.navbar a {
+    position: relative;
+    font-size: 1.2rem;
+}

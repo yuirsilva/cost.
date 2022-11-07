@@ -1,0 +1,22 @@
+.linkWrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-120%);
+}
+.main, .hidden {
+    transition: transform 0.6s var(--cubic-anim);
+}
+
+.linkWrap:hover .main {
+    transform: translateY(120%);
+}
+.linkWrap:hover .hidden {
+    transform: translateY(0) rotateZ(0);
+}

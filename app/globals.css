@@ -1,0 +1,47 @@
+/* colors */
+:root {
+  --primary-clr: #D3C9D7;
+  --secondary-clr: #000000;
+  --cubic-anim: cubic-bezier(0.8, 0, 0, 1);
+  --ease-out-expo: cubic-bezier(0.19,1,0.22,1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font: inherit;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  width: 100%;
+
+  background-color: var(--primary-clr);
+  color: var(--secondary-clr);
+  
+  letter-spacing: 0em;
+  line-height: 1;
+}
+
+html, body {
+  height: 100%;
+}
+
+a {
+  color: var(--secondary-clr);
+  text-decoration: none;
+}
+
+[data-nextjs-scroll-focus-boundary] {
+  display: contents;
+}

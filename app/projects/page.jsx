@@ -8,6 +8,7 @@ import ProjectCard from './ProjectCard'
 
 import {useSearchParams} from 'next/navigation'
 import {useQuery, QueryClient, QueryClientProvider, useMutation} from '@tanstack/react-query'
+import Link from 'next/link'
 
 const queryClient = new QueryClient()
 
@@ -49,6 +50,10 @@ function Projects()
                 <LinkButton to='/newproject' text='Create project' />
             </div>
             {message && <Message type='success' msg={message} />}
+            {data.length === 0 ? <div className={styles.emptyMessageWrap}>
+                <div>Start by creating a project.</div>
+                <Link href='/newproject'>Create project</Link>
+            </div>: ''}
             <div className={styles.projectsWrap}>
                 {data.length > 0 && data.map(project =>
                     <ProjectCard

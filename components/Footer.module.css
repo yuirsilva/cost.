@@ -15,12 +15,32 @@
 .socialList {
     display: flex;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 2rem;
+}
+.socialList a {
+    position: relative;
+    cursor: pointer;
+}
+.socialList a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #000000;
+    z-index: -1;
+    transition: transform 0.4s var(--ease-out-expo);
+}
+.socialList a:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+.socialList a:hover svg {
+    color: var(--primary-clr);
 }
 .socialList svg {
-    cursor: pointer;
-    font-size: 1.5rem;
-}
-.socialList svg:hover {
-    color: aquamarine;
+    transition: color 0.4s var(--ease-out-expo);
+    font-size: 1.4rem;
 }

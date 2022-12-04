@@ -1,0 +1,83 @@
+.CTA {
+    position: relative;
+    z-index: 99;
+    padding: 2rem 4rem;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    background-color: #679780;
+    color: var(--secondary-clr);
+    border: 1px solid var(--secondary-clr);
+    border-radius: 64px;
+    overflow: hidden;
+    transition: background-color 0.8s var(--cubic-anim), color 0.8s var(--cubic-anim);
+}
+.CTA:hover {
+    color: var(--primary-clr);
+    background-color: var(--secondary-clr);
+}
+.CTA:hover .fillBtn {
+    left: 0%;
+}
+.fillBtn {
+    background-color: var(--secondary-clr);
+    border-radius: 64px;
+    border: 2px solid var(--secondary-clr);
+    position: absolute;
+    left: -100%;
+    top: -50%;
+    transform: translate(0, 50%);
+    right: auto;
+    bottom: auto;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: left 1s var(--cubic-anim);
+}
+
+.wordsWrap {
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+}
+.letter {
+    display: inline-block;
+    position: relative;
+}
+.letter :first-child {
+    color: transparent;
+}
+.letter :nth-child(2),
+.letter :last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.8s var(--cubic-anim) calc(15ms * var(--index));
+}
+.letter :nth-child(2)::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s var(--cubic-anim) calc(15ms * var(--index));
+}
+.letter :last-child::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s var(--cubic-anim) calc(15ms * var(--index));
+    transform: translateY(100%);
+}
+.CTA:hover .letter :nth-child(2)::before {
+    transform: translateY(-100%);
+}
+.CTA:hover .letter :last-child::before {
+    transform: translateY(0%);
+}

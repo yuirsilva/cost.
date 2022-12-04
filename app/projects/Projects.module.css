@@ -1,0 +1,22 @@
+.projectsSection {
+    width: 100%;
+    position: relative;
+    padding-top: 1rem;
+}
+.projectsWrap {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.heading h1 {
+    font-size: 2.4rem;
+}

@@ -1,50 +1,48 @@
 'use client'
 import styles from './Cursor.module.css'
-import { useEffect, useRef } from 'react'
+
+import {useState, useEffect} from 'react'
+import {motion} from 'framer-motion'
 
 export default function Cursor()
 {
-    const pointerRef = useRef({x: 0, y: 0})
-    const cursorPos = useRef({x: 0, y:0})
-    const cursor = useRef(0)
-    const requestRef = useRef(0)
+    const [position, setPosition] = useState({x: 0, y: 0})
+    const [cursorVariant, setCursorVariant] = useState('default')
+
+    const handlePointerMove = mm =>
+    {
+        setPosition({x: mm.clientX, y: mm.clientY})
+    }
 
     useEffect(() =>
     {
-        document.addEventListener('pointermove', mouseMove)
-        tick()
+        window.addEventListener('pointermove', handlePointerMove)
 
         return () =>
         {
-            window.removeEventListener('pointermove', mouseMove)
+            window.removeEventListener('pointermove', handlePointerMove)
         }
-    })
+    }, [])
 
-    const mouseMove = (mm) =>
+    const variants =
     {
-        cursorPos.current.x = mm.clientX
-        cursorPos.current.y = mm.clientY
-    }
-
-    const lerp = (start, end, amt) =>
-    {
-        return (1 - amt) * start + amt * end
-    }
-
-    const tick = () =>
-    {
-        pointerRef.current.x = lerp(pointerRef.current.x, cursorPos.current.x, 0.06)
-        pointerRef.current.y = lerp(pointerRef.current.y, cursorPos.current.y, 0.06)
-
-        cursor.current.style.top = pointerRef.current.y + 'px'
-        cursor.current.style.left = pointerRef.current.x + 'px'
-
-        requestRef.current = requestAnimationFrame(tick)
+        default: {
+            x: position.x,
+            y: position.y
+        }
     }
 
     return (
-        <>
-            <div ref={cursor} className={styles.cursor} />
-        </>
+        <motion.div
+            className={styles.cursor}
+            variants={variants}
+            animate={cursorVariant}
+            transition={{
+                default: {
+                    duration: 0.6,
+                    ease: [0, 0, 0, 1]
+                }
+            }}
+        />
     )
 }

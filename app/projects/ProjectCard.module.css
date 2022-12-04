@@ -1,0 +1,94 @@
+.projectCard {
+    max-width: 300px;
+    padding: 1.6rem;
+    border-radius: 10px;
+    color: #FFFFFF;
+    clip-path: inset(0% 0% 0% 0%);
+    transition: filter 0.8s var(--cubic-anim), clip-path 0.8s var(--cubic-anim);
+}
+.categoryText {
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+}
+.projectCard h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.4rem;
+    word-break: break-word;
+}
+.projectCard p {
+    opacity: 0.7;
+    word-break: break-all;
+}
+.actionButtons {
+    margin-top: 1.4rem;
+    display: flex;
+    gap: 0.8rem;
+}
+.actionButtons a,
+.actionButtons button {
+    border: none;
+    backdrop-filter: blur(16px);
+    text-align: center;
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.3s var(--cubic-anim), background-color 0.3s var(--cubic-anim);
+}
+.actionButtons button {
+    background-color: hsla(0,0%,100%,.1);
+    color: #FFFFFF;
+}
+.actionButtons button:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.actionButtons a {
+    position: relative;
+    background-color: #FFFFFF;
+    transition: background-color 0.5s var(--ease-out-expo);
+    overflow: hidden;
+}
+.actionButtons a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+    transform-origin: bottom center;
+    transform: translateY(104%);
+    transition: transform 0.5s var(--ease-out-expo), border-radius 0.5s var(--ease-out-expo);
+    border-radius: 70%;
+    z-index: -1;
+    background-color: #000000;
+}
+.actionButtons a:hover {
+    color: #FFFFFF;
+    background-color: transparent;
+}
+.actionButtons a:hover::after {
+    transform: translateY(0%);
+    border-radius: 0;
+}
+
+.removed {
+    filter: grayscale(1);
+    clip-path: inset(0% 0% 100% 0%);
+    user-select: none;
+    pointer-events: none;
+}
+
+.infra {
+    background-color: var(--dark-slate-blue);
+}
+.development {
+    background-color: var(--brandy);
+}
+.design {
+    background-color: var(--gunmetal);
+}
+.planning {
+    background-color: var(--sacramento-state-green);
+}

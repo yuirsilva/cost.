@@ -9,11 +9,3 @@
 
     margin-inline: auto;
 }
-
-.flexStart {
-    justify-content: flex-start;
-}
-.flexColumn {
-    flex-direction: column;
-    justify-content: flex-start;
-}

@@ -1,6 +1,7 @@
 .container {
     width: 90%;
-    height: calc(100% - 20%);
+    flex: 1;
+    /* height: calc(100% - 20%); */
 
     position: relative;
     display: flex;

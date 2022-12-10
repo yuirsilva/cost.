@@ -26,7 +26,7 @@
     border-radius: 64px;
     background-color: var(--secondary-clr);
     color: #FFFFFF;
-    transition: background-color 0.8s var(--cubic-anim);
+    transition: background-color 0.8s var(--ease-out-expo);
     overflow: hidden;
 }
 .emptyMessageWrap a::after {
@@ -38,7 +38,7 @@
     bottom: 0;
     left: 0;
     background-color: var(--dark-slate-blue);
-    transition: border-radius 0.8s var(--cubic-anim), transform 0.8s var(--cubic-anim);
+    transition: border-radius 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
     border-radius: 100%;
     transform: translateY(100%);
 }

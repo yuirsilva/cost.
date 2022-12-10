@@ -1,0 +1,8 @@
+.form {
+    background-color: #FFFFFF;
+    color: var(--secondary-clr);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 475px;
+}

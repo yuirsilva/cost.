@@ -11,7 +11,7 @@ export default function Cursor()
 
     const handlePointerMove = mm =>
     {
-        setPosition({x: mm.clientX, y: mm.clientY})
+        setPosition({x: mm.pageX, y: mm.pageY})
     }
 
     useEffect(() =>

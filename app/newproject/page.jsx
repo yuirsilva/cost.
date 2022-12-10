@@ -2,36 +2,50 @@
 import styles from './NewProject.module.css'
 
 import Image from 'next/image'
-import {useRouter, useSearchParams, usePathname} from 'next/navigation'
+import {useRouter} from 'next/navigation'
+import {useMutation, QueryClientProvider, QueryClient} from '@tanstack/react-query'
 
 import ProjectForm from './ProjectForm'
 import SKConcretica from '../../components/SKConcretica'
 
-export default function NewProject()
+const queryClient = new QueryClient()
+
+export default function NewProjectWrap()
+{
+    return (
+        <QueryClientProvider client={queryClient}>
+            <NewProject />
+        </QueryClientProvider>
+    )
+}
+
+function NewProject()
 {
     const router = useRouter()
-    const searchParams = useSearchParams()
 
-    const getProjects = async (project) =>
+    const addProject = async (project) =>
     {
-        const response = await fetch('http://localhost:5000/projects', {
+        const res = await fetch('http://localhost:5000/projects',
+        {
             method: 'POST',
-            headers: {
+            headers:
+            {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(project)
         })
-        const result = await response.json()
-
-        router.push('/projects?state="Project successfuly created!"')
+        return res.json()
     }
+    const {mutate} = useMutation(addProject)
 
     const createPost = (project) =>
     {
         project.cost = 0
         project.services = []
+        project.creationDate = new Date().toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})
 
-        getProjects(project)
+        mutate(project)
+        router.push('/projects?state="Project successfuly created!"')
     }
 
     return (

@@ -1,18 +1,18 @@
 'use client'
 import styles from './Projects.module.css'
 
-import Message from '../../components/Message'
+import Message from '../../../components/Message'
 import LinkButton from './LinkButton'
-import SKConcretica from '../../components/SKConcretica'
+import SKConcretica from '../../../components/SKConcretica'
 import ProjectCard from './ProjectCard'
 
 import {useSearchParams} from 'next/navigation'
-import {useQuery, QueryClient, QueryClientProvider, useMutation} from '@tanstack/react-query'
+import {useQuery, useMutation, QueryClientProvider, QueryClient} from '@tanstack/react-query'
 import Link from 'next/link'
 
 const queryClient = new QueryClient()
 
-export default function App()
+export default function ProjectsWrap()
 {
     return (
         <QueryClientProvider client={queryClient}>
@@ -30,10 +30,10 @@ function Projects()
     }
     const {isLoading, isError, data} = useQuery(['projects'], fetchProjects)
 
-    const deleteProject = useMutation(id =>
+    const deleteProject = useMutation(async id =>
     {
-        fetch(`http://localhost:5000/projects/${id}`, {method: 'DELETE'})
-            .then(() => {queryClient.invalidateQueries('projects')})
+        await fetch(`http://localhost:5000/projects/${id}`, {method: 'DELETE'})
+        queryClient.invalidateQueries('projects')
     })
 
     const searchParams = useSearchParams()
@@ -63,7 +63,8 @@ function Projects()
                         budget={project.budget}
                         category={project.category.name}
                         deleteProject={deleteProject}
-                />)}
+                    />
+                )}
             </div>
         </section>
     )

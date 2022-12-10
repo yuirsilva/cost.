@@ -15,7 +15,7 @@ export default function ProjectCard({id, name, budget, category, deleteProject})
         setTimeout(() =>
         {
             deleteProject.mutate(id)
-        }, 1200)
+        }, 900)
     }
 
     return (
@@ -25,7 +25,7 @@ export default function ProjectCard({id, name, budget, category, deleteProject})
             <p>Budget: ${budget}</p>
             <div className={styles.actionButtons}>
                 <button onClick={remove}>Delete</button>
-                <Link href='/'>Edit</Link>
+                <Link href={`/project/${id}`}>Edit</Link>
             </div>
         </div>
     )

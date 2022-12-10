@@ -1,0 +1,23 @@
+.serviceCard {
+    background-color: #0000005b;
+    color: #FFFFFF;
+    clip-path: inset(0% 0% 0% 0%);
+    transition: filter 0.8s var(--cubic-anim), clip-path 0.8s var(--cubic-anim);
+}
+.serviceCard h4 {
+    margin-bottom: 1.4rem;
+    word-break: break-word;
+}
+.serviceCard p {
+    word-break: break-word;
+}
+.serviceCard p:first-of-type {
+    margin-bottom: 0.6rem;
+}
+
+.removed {
+    filter: grayscale(1);
+    clip-path: inset(0% 0% 100% 0%);
+    user-select: none;
+    pointer-events: none;
+}

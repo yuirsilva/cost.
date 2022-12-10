@@ -1,18 +1,5 @@
 {
-  "projects": [
-    {
-      "name": "MACACOS MALUCOS",
-      "budget": "5200",
-      "category": {
-        "id": "1",
-        "name": "Infra"
-      },
-      "cost": 0,
-      "services": [],
-      "creationDate": "December 10, 2022",
-      "id": 1
-    }
-  ],
+  "projects": [],
   "categories": [
     {
       "id": 1,

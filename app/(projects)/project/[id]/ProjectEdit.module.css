@@ -18,13 +18,11 @@
     color: #FFFFFF;
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 .serviceContainer h2 {
     width: 100%;
     margin-bottom: 1.4rem;
-}
-.serviceContainer div:not(:last-child) {
-    margin-right: 1rem;
 }
 
 .projectDetails h1 {

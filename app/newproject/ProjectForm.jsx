@@ -21,7 +21,6 @@ export default function ProjectFormWrap(props)
 
 function ProjectForm({handleSubmit, projectData, submitButtonText})
 {
-    console.log(submitButtonText)
     const [project, setProject] = useState(projectData || {})
 
     const getCategories = async () =>

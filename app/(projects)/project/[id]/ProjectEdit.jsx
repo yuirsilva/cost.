@@ -29,15 +29,15 @@ function ProjectEdit({id})
     const [typeMessage, setTypeMessage] = useState()
 
 
-    const fetchProject = async (id) =>
+    const fetchProject = async id =>
     {
         const res = await fetch(`http://localhost:5000/projects/${id}`)
         return res.json()
     }
 
-    const patchProject = async id =>
+    const patchProject = async data =>
     {
-        const res = await fetch(`http://localhost:5000/projects/${id}`,
+        const res = await fetch(`http://localhost:5000/projects/${data.id}`,
         {
             method: 'PATCH',
             headers:
@@ -48,9 +48,11 @@ function ProjectEdit({id})
         })
         return res.json()
     }
-    const {mutate: updateProject} = useMutation(patchProject)
+    const {mutate: updateProject} = useMutation(patchProject, {onSuccess: () => {
+        queryClient.invalidateQueries({queryKey: ['project']})
+    }})
 
-    const updateProjectWithService = async () =>
+    const updateProjectWithService = async data =>
     {
         await fetch(`http://localhost:5000/projects/${data.id}`,
         {
@@ -62,11 +64,13 @@ function ProjectEdit({id})
             body: JSON.stringify(data)
         })
     }
-    const {mutate: addService} = useMutation(updateProjectWithService)
+    const {mutate: addService} = useMutation(updateProjectWithService, {onSuccess: () => {
+        queryClient.invalidateQueries({queryKey: ['project']})
+    }})
 
     const rService = async projectUpdated =>
     {
-        await fetch(`http://localhost:5000/projects/${projectUpdated.id}`,
+        const res = await fetch(`http://localhost:5000/projects/${projectUpdated.id}`,
         {
             method: 'PATCH',
             headers:
@@ -75,15 +79,18 @@ function ProjectEdit({id})
             },
             body: JSON.stringify(projectUpdated)
         })
+        return res.json()
     }
-    const {mutate: removeServiceFromProject} = useMutation(rService)
+    const {mutate: removeServiceFromProject} = useMutation(rService, {onSuccess: () => {
+        queryClient.invalidateQueries({queryKey: ['project']})
+    }})
 
-    const {isLoading, isError, data} = useQuery(['project'], fetchProject.bind(this, id))
+    const {isLoading, isError, data, isFetched} = useQuery(['project'], fetchProject.bind(this, id))
 
     if(isLoading) return <div>Loading...</div>
     if(isError) return <div>Failed to fetch projects</div>
 
-    const editProject = async (data) =>
+    const editProject = async data =>
     {
         setMessage('')
         // budget validation
@@ -95,7 +102,6 @@ function ProjectEdit({id})
         }
 
         updateProject(data)
-        queryClient.invalidateQueries('project')
 
         setShowProjectForm(!showProjectForm)
         setMessage('Project updated!')
@@ -123,7 +129,6 @@ function ProjectEdit({id})
 
         // update project
         addService(data)
-        queryClient.invalidateQueries('project')
         setShowServiceForm(!showServiceForm)
     }
 
@@ -135,7 +140,6 @@ function ProjectEdit({id})
         projectUpdated.cost = parseFloat(projectUpdated.cost - parseFloat(cost))
 
         removeServiceFromProject(projectUpdated)
-        queryClient.invalidateQueries('project')
         setMessage('Service removed')
     }
 
@@ -164,7 +168,7 @@ function ProjectEdit({id})
                 :   (<div className={styles.projectInfo}>
                         <Image alt='Little guys searching something' src='/searching.svg' width={1000} height={550} />
                         <div className={styles.projectFormWrap}>
-                            <ProjectForm handleSubmit={editProject} submitButtonText='Confirm' projectData={data} />
+                            <ProjectForm handleSubmit={editProject} submitButtonText='Confirm' projectData={isFetched && data} />
                         </div>
                     </div>)}
             </div>

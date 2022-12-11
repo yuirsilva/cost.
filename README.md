@@ -11,7 +11,8 @@ This project is a CRUD web application built using Next.js 13 and json-server. T
 - [JSON Server](https://github.com/typicode/json-server) (tool for creating a fake REST API, which can be used for prototyping and testing. It allows you to quickly create a data store using JSON data, and then perform the CRUD operations on that data using HTTP requests.)
 ## Screenshots
 
-![Application Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Projects Page Screenshot](https://user-images.githubusercontent.com/79874698/206909775-6593bdbb-c685-43e6-b76d-9bcc12456315.png)
+![Project Edit Page Screenshot](https://user-images.githubusercontent.com/79874698/206909857-4f10a280-ee34-43f4-8060-b49d661c247a.png)
 
 
 ## Run Locally
@@ -19,7 +20,7 @@ This project is a CRUD web application built using Next.js 13 and json-server. T
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/yuirsilva/cost..git
 ```
 
 Go to the project directory
